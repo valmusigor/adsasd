@@ -1,0 +1,71 @@
+.App {
+    text-align: center;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Counter {
+    border: 2px solid #61dafb;
+    border-radius: 10px;
+    min-width: 400px;
+    height: 40vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.CounterScreen {
+    background-color: #61dafb;
+    border-radius: 10px;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    margin-bottom: 20px;
+}
+
+.CustomText {
+    color: #282c34;
+}
+
+.WarnText {
+    color: red;
+}
+
+.ControlPanel {
+    width: 100%;
+    border: 2px solid #61dafb;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.Button {
+    border: none;
+    border-radius: 5px;
+    color: #282c34;
+    padding: 12px 52px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.ActiveButton {
+    background-color: #61dafb;
+}
+
+.DisabledButton {
+    background-color: #395454;
+}
