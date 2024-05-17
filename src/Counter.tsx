@@ -1,16 +1,21 @@
 import React, {useState} from 'react';
 import './App.css';
 import {CounterScreen} from './CounterScreen';
-import {Button} from './Button';
+import {SettingsScreen} from './components/settings/screen/SettingsScreen';
 
-type CounterPropsType = {
-    limit: number
+export type LimitType = {
+    minValue: number;
+    maxValue: number;
 };
 
-export const Counter = (props: CounterPropsType) => {
-    const [counterValue, setCounterValue] = useState(0);
+export type SceneType = 'counter' | 'settings';
 
-    const limitReached = props.limit <= counterValue;
+export const Counter = () => {
+    const [counterValue, setCounterValue] = useState(0);
+    const [limit, setLimit] = useState<LimitType>({minValue: 0, maxValue: 1});
+    const [scene, setScene] = useState<SceneType>('counter');
+
+    const limitReached = limit.maxValue <= counterValue;
     const increment = () => {
         if (!limitReached) {
             setCounterValue(counterValue + 1);
@@ -18,14 +23,27 @@ export const Counter = (props: CounterPropsType) => {
     }
 
     const reset = () => {
-        setCounterValue(0);
+        setCounterValue(limit.minValue);
     }
 
-    return <div className="Counter">
-        <CounterScreen value={counterValue} limitReached={limitReached}/>
-        <div className={"ControlPanel"}>
-            <Button text={'inc'} onClick={increment} disabled={limitReached}/>
-            <Button text={'reset'} onClick={reset} disabled={counterValue === 0}/>
+    const saveSettings = (limit: LimitType) => {
+        setLimit(limit);
+        setCounterValue(limit.minValue);
+        setScene('counter');
+    }
+
+    if (scene === 'counter') {
+        return <div>
+            <CounterScreen
+                value={counterValue}
+                limitReached={limitReached}
+                increment={increment} reset={reset}
+                changeScene={() => setScene('settings')}
+            />
         </div>
+    }
+
+    return <div>
+        <SettingsScreen limit={limit} saveSettings={saveSettings}/>
     </div>
 }

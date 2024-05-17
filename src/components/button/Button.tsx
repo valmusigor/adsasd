@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css';
+import '../../App.css';
+import styles from './Button.module.css';
 
 type ButtonPropsType = {
     text: String
@@ -8,10 +9,10 @@ type ButtonPropsType = {
 }
 
 export const Button = (props: ButtonPropsType) => {
-    const buttonStyle = props.disabled ? 'DisabledButton' : 'ActiveButton';
+    const buttonStyle = props.disabled ? styles.DisabledButton : styles.ActiveButton;
     return <button
         disabled={props.disabled}
-        className={`Button ${buttonStyle}`}
+        className={`${styles.Button} ${buttonStyle}`}
         onClick={props.onClick}
     >
         {props.text}

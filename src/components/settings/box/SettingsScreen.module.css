@@ -1,0 +1,10 @@
+.InputBox {
+    min-width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.InputBox input {
+    font-size: 30px;
+}
